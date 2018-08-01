@@ -1,5 +1,5 @@
 ﻿using System;
-using Repro;
+using ReProBuild;
 //Using Tag
 
 namespace Application
@@ -8,7 +8,7 @@ namespace Application
     {
         public static void Main(string[] args)
         {
-			var CleanProgramString = Reprogrammer.DecompileCode("Application.exe");
+			var CleanProgramString = CompileDecompiles.DecompileCode("Application.exe");
 			string UserName = "";
 			string ComputerName = "";
 
@@ -17,7 +17,7 @@ namespace Application
 				Console.WriteLine("Hi, what is your name?");
 				UserName = Console.ReadLine();
 				CleanProgramString = CleanProgramString.Replace("string text2 = \"\";", "string text2 = \"" + UserName + "\";");
-				Console.WriteLine(Reprogrammer.CompileExecutable("Application", CleanProgramString));
+				Console.WriteLine(CompileDecompiles.CompileExecutable("Application", CleanProgramString));
 				return;//TODO restart
 			}
 			else if (string.IsNullOrEmpty(ComputerName))
@@ -31,7 +31,7 @@ namespace Application
 				CleanProgramString = CleanProgramString.Replace("Replace(\"string empty = \"", "Replace(\"string empty = \\\"");
 				CleanProgramString = CleanProgramString.Replace("\\\"\";", "\";");
 				//Console.WriteLine(CleanProgramString);
-				Console.WriteLine(Reprogrammer.CompileExecutable("Application", CleanProgramString));
+				Console.WriteLine(CompileDecompiles.CompileExecutable("Application", CleanProgramString));
                 return;//TODO restart
 			}
 
